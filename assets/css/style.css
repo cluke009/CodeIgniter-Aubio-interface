@@ -1,0 +1,24 @@
+html, body {
+height: 100%;
+}
+body { margin:0; font-family:"Segoe UI", Segoe, Tahoma, Geneva, sans-serif;background: url(../images/bg-stripe.png) top left repeat #666;}
+.wrapper{background: url(../images/bg.png) top center no-repeat ; padding:20px 0;height: 100%;}
+.ui-widget{ font-size:0.8em; }
+.header{margin-bottom:.25em;padding:0 10px}
+.footer{text-align:right;color:#fff;margin:10px 20px 0 0}
+.footer a{color:#f6a828}
+
+#tabs{overflow:auto}
+.upload-wrapper{margin:20px 30px 0; padding:20px;width:830px;}
+
+.fileinput-wrapper{float:left;margin-right:30px}
+.submit{float:left}
+label,
+.slider-label{margin:.75em 0}
+#slider7{margin-bottom:.75em }
+.gnuplot{float:left}
+.sidebar{width:170px;float:left;margin-left:20px;}
+.sibebar a.button{margin-bottom:10px}
+.gnuplot{margin-bottom:2em;padding:3px 3px 0;}
+.terminal{margin:1em}
+
