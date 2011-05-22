@@ -18,7 +18,9 @@ class Upload extends CI_Controller {
     $this->load->library('upload', $config);
 
     if ( ! $this->upload->do_upload('userfile')) {
-      $error = array('error' => $this->upload->display_errors('<div id="dialog" title="Error"><p class="ui-state-error">'.'You tried to upload a file with the mime-type "<em>' . $_FILES['userfile']['type'] .'</em>"<br /><br />', '</p></div>'));
+      $ui_dialog = '<div id="dialog" title="Error"><p class="ui-state-error">';
+      $mime = 'You tried to upload a file with the mime-type "<em>' . $_FILES['userfile']['type'] .'</em>"<br /><br />';
+      $error = array('error' => $this->upload->display_errors($ui_dialog . $mime, '</p></div>'));
       $this->load->view('upload_form', $error);
     }
     else {

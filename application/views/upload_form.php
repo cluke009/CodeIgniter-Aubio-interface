@@ -1,34 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-  <title>Upload Form</title>
-  <!-- SCRIPTS -->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.js" type="text/javascript"></script>
-  <script src="<?=base_url()?>assets/js/jquery.fileinput.min.js" type="text/javascript"></script>
-  <script src="<?=base_url()?>assets/js/swfobject.js" type="text/javascript"></script>
-  <script src="<?=base_url()?>assets/js/jwplayer.js" type="text/javascript"></script>
-  <script src="<?=base_url()?>assets/js/script.js" type="text/javascript"></script>
-  <script>
-$(document).ready(function() {
-    $('#file_input').fileUpload({
-        'uploader': '<?=base_url()?>assets/jquery.uploadify-v2.1.4/uploader.swf',
-        'script': '/svn/handinhand/admin/gallery/upload',
-        'folder': '/svn/handinhand/assets/images/galleries',
-        'multi': true,
-        'auto': true,
-        'fileExt': '*.wav',
-        'buttonText': 'Browse...',
-        'cancelImg': '<?=base_url()?>assets/jquery.uploadify-v2.1.4/cancel.png'
-    });
-});
-  </script>
-  <!-- STYLES -->
-  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/themes/ui-lightness/jquery-ui.css" type="text/css"/>
-  <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/css/grid.css"/>
-  <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/css/fileinput.css"/>
-  <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/css/style.css"/>
+  <title>Beat Slicer Beta</title>
+  <?php include('header.php'); ?>
 </head>
 <body class="upload_form">
 <div class="wrapper">
@@ -36,15 +10,19 @@ $(document).ready(function() {
   <div class="column grid_12">
     <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix header"><h1>BeatSlicer Beta</h1></div>
     <?php echo $error;?>
-    <?php echo form_open_multipart('upload/do_upload');?>
+    <?php echo form_open_multipart('upload/do_upload', array('id' => 'uploadform'));?>
+      <input type="hidden" name="UPLOAD_IDENTIFIER" id="progress_key" value="" />
       <div id="tabs">
         <ul>
           <li><a href="#tabs-1">Basic</a></li>
           <li><a href="#tabs-2">Advanced</a></li>
         </ul>
 
+
         <div class="upload-wrapper ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
           <input class="upload" type="file" name="userfile" size="20"/>
+
+          <span class="progressbar" id="uploadprogressbar">0%</span>
           <input class="submit" type="submit" value="Slice that shit"/>
         </div><!-- upload-wrapper -->
 
@@ -139,12 +117,9 @@ $(document).ready(function() {
       </div><!-- tabs -->
     </form>
   </div><!-- column grid_12 -->
-  <div class="column grid_12 footer ">Made with <a href="http://codeigniter.com/">CodeIgniter</a> <a href="http://jqueryui.com/">Jquery UI</a> and <a href="http://aubio.org/aubiocut.html">Aubiocut</a></div>
-  <!-- <button id="opener">Open the dialog</button> -->
+  <?php include('footer.php'); ?>
 </div><!-- row -->
 </div><!-- wrapper -->
-
-
 </body>
 </html>
 
