@@ -1,13 +1,21 @@
 <?php
 class Beats extends CI_Controller {
 
-	public function index()
-	{
+  public function index()
+  {
+    // Controller config
     $this->load->library('listfiles', array('wav'));
     $this->load->helper('date');
     $data['files'] = $this->listfiles->getFiles('uploads/beats');
-		$this->load->view('list_files', $data);
-	}
+
+    // Template Config
+    $this->template->set('title', 'Beats');
+    $this->template->set('nav', 'Beats');
+    $this->template->set('body_class', 'beats');
+    $this->template->set('nav_list', array('Beats', 'About', 'Contact'));
+    $this->template->load('template/template', 'beats_view', $data);
+
+  }
 }
 ?>
 

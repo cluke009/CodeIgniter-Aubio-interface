@@ -4,24 +4,30 @@ class Upload extends CI_Controller {
 
   function __construct() {
     parent::__construct();
-    $this->load->helper(array('form', 'url'));
+    $this->load->helper(array('form'));
+
+    // Template Config
+    $this->template->set('title', 'Open Beat Slicer');
+    $this->template->set('nav', '');
+    $this->template->set('body_class', 'home');
+    $this->template->set('nav_list', array('Beats', 'About', 'Contact'));
   }
 
   function index(){
-    $this->load->view('upload_form', array('error' => ' ' ));
+    $this->template->load('template/template', 'upload_view', array('error' => ' ' ));
   }
 
   function do_upload() {
     $config['upload_path'] = './uploads/beats';
     $config['allowed_types'] = 'wav';
-
+    $config['max_size']	= '3072';
     $this->load->library('upload', $config);
 
     if ( ! $this->upload->do_upload('userfile')) {
       $ui_dialog = '<div id="dialog" title="Error"><p class="ui-state-error">';
       $mime = 'You tried to upload a file with the mime-type "<em>' . $_FILES['userfile']['type'] .'</em>"<br /><br />';
       $error = array('error' => $this->upload->display_errors($ui_dialog . $mime, '</p></div>'));
-      $this->load->view('upload_form', $error);
+      $this->template->load('template/template', 'upload_view', $error);
     }
     else {
       $data = array(
@@ -59,7 +65,7 @@ class Upload extends CI_Controller {
 
       // Aubiocut setting
       $absettings = array(
-        'abrequired'  => ' -i ' . $full_path . ' -c -L -p -O ../' . $file_name . $unix . '.png',
+        'abrequired'  => ' -i ' . $full_path . ' -c -L -p -O ' . $file_name . $unix . '.png',
         'threshold'   => ' -t ' . $data['aubio']['threshold'],
         'dcthreshold' => ' -C ' . $data['aubio']['dcthreshold'],
         'silence'     => ' -s ' . $data['aubio']['silence'],
@@ -83,33 +89,34 @@ class Upload extends CI_Controller {
       exec('cd ' . $file_path . ' && zip -r ' . $file_name . '-' . $unix . '.zip ' . $file_name);
 
       // Make paths accessible to view
-      $data['upload_data']['zip_path'] = './uploads/beats/' . $file_name . '-' . $unix . '.zip';
-      $data['upload_data']['plot_path'] = '/ci/uploads/beats/' . $file_name . $unix . '.png';
+      $data['upload_data']['zip_path'] = base_url() . 'uploads/beats/' . $file_name . '-' . $unix . '.zip';
+      $data['upload_data']['plot_path'] = base_url() . 'uploads/beats/' . $file_name . '/'. $file_name . $unix . '.png';
 
       $myvardelete = substr($absettings, 0, (stripos($absettings, $file_name)));
       $absettings = str_replace($myvardelete, '', $absettings);
       $data['aubio']['settings'] = 'aubiocut -i ' . $absettings;
 
-      // Clean up after ourselves
-      unlink($full_path);
-      //http://php.net/manual/en/function.rmdir.php
-      function rrmdir($dir) {
-       if (is_dir($dir)) {
-         $objects = scandir($dir);
-         foreach ($objects as $object) {
-           if ($object != "." && $object != "..") {
-             if (filetype($dir."/".$object) == "dir") rrmdir($dir."/".$object); else unlink($dir."/".$object);
-           }
-         }
-         reset($objects);
-         rmdir($dir);
-       }
-      }
+#      // Clean up after ourselves
+#      unlink($full_path);
+#      //http://php.net/manual/en/function.rmdir.php
+#      function rrmdir($dir) {
+#       if (is_dir($dir)) {
+#         $objects = scandir($dir);
+#         foreach ($objects as $object) {
+#           if ($object != "." && $object != "..") {
+#             if (filetype($dir."/".$object) == "dir") rrmdir($dir."/".$object); else unlink($dir."/".$object);
+#           }
+#         }
+#         reset($objects);
+#         rmdir($dir);
+#       }
+#      }
 
-      rrmdir($cut_path);
+#      rrmdir($cut_path);
 
       // Success !!!
-      $this->load->view('upload_success', $data);
+      $this->template->load('template/template', 'upload_success_view', $data);
+      //$this->load->view('upload_success', $data);
     }
   }
 
