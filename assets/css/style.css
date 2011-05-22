@@ -1,16 +1,34 @@
-html, body {
-height: 100%;
-}
+/* GENERAL */
+html, body { height: 100%; }
 body { margin:0; font-family:"Segoe UI", Segoe, Tahoma, Geneva, sans-serif;background: url(../images/bg-stripe.png) top left repeat #666;}
-.wrapper{background: url(../images/bg.png) top center no-repeat ; padding:20px 0;height: 100%;}
+.wrapper{background: url(../images/bg.png) top center no-repeat ; padding:0 0 20px;height: 100%;}
+
+/* HEADER */
+#header{overflow:visible;}
+#header a{text-decoration: none;}
+/*#header{overflow:visible;margin-bottom:.25em;padding:0 10px}*/
+
+/* NAVIGATION */
+#navigation li{list-style:none;float:right;margin-right:10px}
+#navigation{text-align:right;color:#fff;margin:10px 20px 0 0;}
+#navigation a{color:#fff;text-decoration:none;}
+#navigation a:hover{color:#f6a828;text-decoration:underline;}
+
+/* CONTENT */
+
+
+/* FOOTER */
+#footer{text-align:right;color:#fff;margin:10px 20px 0 0;}
+#footer a{color:#f6a828;}
+
+
 .ui-widget{ font-size:0.8em; }
-.header{margin-bottom:.25em;padding:0 10px}
-.footer{text-align:right;color:#fff;margin:10px 20px 0 0}
-.footer a{color:#f6a828}
+
 
 #tabs{overflow:auto}
 .upload-wrapper{margin:20px 30px 0; padding:20px;width:830px;}
 
+/* UNSORTED */
 .fileinput-wrapper{float:left;margin-right:30px}
 .submit{float:left}
 label,
