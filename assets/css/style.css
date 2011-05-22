@@ -1,12 +1,11 @@
 /* GENERAL */
-html, body { height: 100%; }
-body { margin:0; font-family:"Segoe UI", Segoe, Tahoma, Geneva, sans-serif;background: url(../images/bg-stripe.png) top left repeat #666;}
+html, body { height: 100%; margin:0; font-family:"Segoe UI", Segoe, Tahoma, Geneva, sans-serif;}
+body {background: url(../images/bg-stripe.png) top left repeat #666;}
 .wrapper{background: url(../images/bg.png) top center no-repeat ; padding:0 0 20px;height: 100%;}
 
 /* HEADER */
 #header{overflow:visible;}
-#header a{text-decoration: none;}
-/*#header{overflow:visible;margin-bottom:.25em;padding:0 10px}*/
+#header a{text-decoration: none; padding:0 10px;}
 
 /* NAVIGATION */
 #navigation li{list-style:none;float:right;margin-right:10px}
@@ -15,20 +14,22 @@ body { margin:0; font-family:"Segoe UI", Segoe, Tahoma, Geneva, sans-serif;backg
 #navigation a:hover{color:#f6a828;text-decoration:underline;}
 
 /* CONTENT */
-
+#contents{margin-top:10px;}
 
 /* FOOTER */
 #footer{text-align:right;color:#fff;margin:10px 20px 0 0;}
 #footer a{color:#f6a828;}
 
-
-.ui-widget{ font-size:0.8em; }
-
-
-#tabs{overflow:auto}
-.upload-wrapper{margin:20px 30px 0; padding:20px;width:830px;}
+/* BEATS VIEW */
+.portlet { margin: 0 0 1em; }
+.portlet-header { margin: 0.3em; padding-bottom: 4px; padding-left: 0.2em; }
+.portlet-header .ui-icon { float: right; }
+.portlet-content { padding: 0.4em; }
 
 /* UNSORTED */
+.ui-widget{ font-size:0.8em; }
+#tabs{overflow:auto}
+.upload-wrapper{margin:20px 30px 0; padding:20px;width:830px;}
 .fileinput-wrapper{float:left;margin-right:30px}
 .submit{float:left}
 label,
