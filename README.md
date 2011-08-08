@@ -1,7 +1,7 @@
 CodeIgnitor Aubio Interface
 ==========================================
 
-A web based GUI for Aubiocut built with Codeigniter and Jquery
+A web based GUI for Aubiocut built with CodeIgniter and Jquery
 
 Requirements
 --------
@@ -13,11 +13,9 @@ Requirements
 Installation
 --------
 
-* Tested under Ubuntu 10.10
-* Download latest version of Codeigniter
-* Copy the applications and assets folder to the root Codeigniter directory
-* Add 'uploads' folder to root directory with 777 permissions
+* Tested under Ubuntu 10.10/11.04
+* CodeIgniter is now included in repo
 * Install aubio-tools and gnuplot
 <pre>sudo apt-get install aubio-tools python-gnuplot</pre>
 * This should install all required packages on Ubuntu/Debian machine
-
+* htaccess is configured for <em>localhost/CodeIgniter-Aubio-interface</em> for more help go to http://tinyurl.com/3ox6sss

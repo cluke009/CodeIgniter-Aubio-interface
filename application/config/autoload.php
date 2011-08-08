@@ -52,7 +52,7 @@ $autoload['packages'] = array(APPPATH.'third_party');
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('template','javascripts');
+$autoload['libraries'] = array('template');
 
 
 /*
@@ -115,4 +115,3 @@ $autoload['model'] = array();
 
 /* End of file autoload.php */
 /* Location: ./application/config/autoload.php */
-
