@@ -66,4 +66,3 @@ function wavDur($file) {
   </div>
   </div> <!-- tabs-1 -->
 </div> <!-- tabs -->
-

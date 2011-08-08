@@ -87,7 +87,7 @@ class Upload extends CI_Controller {
       chmod($cut_path, 0777);
       exec('cd ' . $cut_path . ' && aubiocut' . escapeshellcmd($absettings) );
       exec('cd ' . $file_path . ' && zip -r ' . $file_name . '-' . $unix . '.zip ' . $file_name);
-
+      exec('cd ' . $file_path . ' && lame ' . $file_name . '.wav -f -m m -b 16 --resample 16 ' . $file_name . '.mp3');
       // Make paths accessible to view
       $data['upload_data']['zip_path'] = base_url() . 'uploads/beats/' . $file_name . '-' . $unix . '.zip';
       $data['upload_data']['plot_path'] = base_url() . 'uploads/beats/' . $file_name . '/'. $file_name . $unix . '.png';
@@ -122,4 +122,3 @@ class Upload extends CI_Controller {
 
 }
 ?>
-

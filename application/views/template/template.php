@@ -4,6 +4,7 @@
   <title><?=$title?></title>
   <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
   <?php include('styles.php'); ?>
+  <?php include('scripts.php'); ?>
 </head>
 <body class="<?=$body_class?>">
   <div class="wrapper">
@@ -23,4 +24,3 @@
   </div><!-- wrapper -->
 </body>
 </html>
-

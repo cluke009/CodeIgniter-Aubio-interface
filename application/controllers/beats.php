@@ -4,7 +4,7 @@ class Beats extends CI_Controller {
   public function index()
   {
     // Controller config
-    $this->load->library('listfiles', array('wav'));
+    $this->load->library('listfiles', array('mp3'));
     $this->load->helper('date');
     $data['files'] = $this->listfiles->getFiles('uploads/beats');
 
@@ -18,4 +18,3 @@ class Beats extends CI_Controller {
   }
 }
 ?>
-
