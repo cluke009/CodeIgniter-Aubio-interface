@@ -126,7 +126,7 @@ class Waveform {
 
     // the lower the number means longer processing time
 
-    define("DETAIL", 10);
+    define("DETAIL", 5);
 
     // get user vars from form
     $width = isset($_POST["width"]) ? (int)$_POST["width"] : 500;
@@ -163,12 +163,12 @@ class Waveform {
       // resample the image to the proportions defined in the form
       $rimg = imagecreatetruecolor($width, $height);
       imagecopyresampled($rimg, $img, 0, 0, 0, 0, $width, $height, sizeof($data) / DETAIL, $height);
-      imagepng($rimg, $filepath . 'test.png');
+      imagepng($rimg, $fileupload.'.png');
       imagedestroy($rimg);
     } else {
 
       // print out at it's raw width (size of $data / detail level)
-      imagepng($img, $filepath . 'test.png');
+      imagepng($img, $fileupload.'.png');
       imagedestroy($img);
     }
   }
