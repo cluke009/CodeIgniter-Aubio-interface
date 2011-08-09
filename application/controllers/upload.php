@@ -70,9 +70,7 @@ class Upload extends CI_Controller {
       $file_name = $data['upload_data']['raw_name'];
       $cut_path = $file_path . $file_name;
 
-
       // Aubiocut setting
-
       $absettings = array(
         'abrequired' => ' -i ' . $full_path . ' -c -L -p -O ' . $file_name . '-plot.png',
         'threshold' => ' -t ' . $data['aubio']['threshold'],
