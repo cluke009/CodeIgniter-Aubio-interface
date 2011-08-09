@@ -1,4 +1,3 @@
-<?php print_r($upload_data);?>
 <div id="tabs">
   <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix header">
     <h3>Your file was successfully uploaded!</h3>

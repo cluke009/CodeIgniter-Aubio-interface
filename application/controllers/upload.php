@@ -4,8 +4,7 @@ class Upload extends CI_Controller {
   function __construct() {
     parent::__construct();
     $this->load->helper(array(
-      'form',
-      'date'
+      'form'
     ));
     $this->load->library(array(
       'waveform'
@@ -71,12 +70,6 @@ class Upload extends CI_Controller {
       $file_name = $data['upload_data']['raw_name'];
       $cut_path = $file_path . $file_name;
 
-      // Date info
-      #      $now = time();
-
-      #      $human = unix_to_human($now);
-
-      #      $unix = human_to_unix($human);
 
       // Aubiocut setting
 
@@ -135,8 +128,8 @@ class Upload extends CI_Controller {
       rrmdir($cut_path);
 
       // Make paths accessible to view
-      $data['upload_data']['zip_path'] = base_url() . 'uploads/' . $file_name . '-' . '.zip';
-      $data['upload_data']['plot_path'] = base_url() . 'uploads/' . $file_name . '/' . $file_name . '.png';
+      $data['upload_data']['zip_path'] = base_url() . 'uploads/beats/' . $file_name . '.zip';
+      $data['upload_data']['plot_path'] = base_url() . 'uploads/png/' . $file_name . '-plot.png';
       $myvardelete = substr($absettings, 0, (stripos($absettings, $file_name)));
       $absettings = str_replace($myvardelete, '', $absettings);
       $data['aubio']['settings'] = 'aubiocut -i ' . $absettings;
