@@ -5,6 +5,7 @@ class Upload extends CI_Controller {
   function __construct() {
     parent::__construct();
     $this->load->helper(array('form'));
+    $this->load->library(array('waveform'));
 
     // Template Config
     $this->template->set('title', 'Open Beat Slicer');
@@ -95,6 +96,12 @@ class Upload extends CI_Controller {
       $myvardelete = substr($absettings, 0, (stripos($absettings, $file_name)));
       $absettings = str_replace($myvardelete, '', $absettings);
       $data['aubio']['settings'] = 'aubiocut -i ' . $absettings;
+
+
+      $this->waveform->test($file_path . $file_name, $file_path);
+      //$data['test'] = html2rgb($file_path);
+
+
 
 #      // Clean up after ourselves
 #      unlink($full_path);
